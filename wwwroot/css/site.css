@@ -1,0 +1,138 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*tab navigation*/
+.login-logout-card .card-header {
+    padding: 0px 0px 12px 0px;
+}
+
+.login-logout-card ul.nav-tabs {
+    margin: 0px 0px -12px 0px;
+}
+
+.login-logout-card li.nav-item {
+    width: 50%;
+}
+
+.login-logout-card a.nav-link {
+    font-size: 1rem;
+    color: #495057;
+    text-align: center;
+    padding: 1rem;
+}
+
+.login-logout-card .card-body {
+    padding: 10px 20px;
+}
+
+body {
+    transition: background-color 0.3s ease;
+}
+
+h2 {
+    color: #4CAF50; /* Green color */
+    transition: color 0.3s ease;
+}
+
+/* Login Form Styles */
+#account {
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#account:hover {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    transform: scale(1.02);
+}
+
+/* Registration Form Styles */
+#registerForm {
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#registerForm:hover {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    transform: scale(1.02);
+}
+
+/* Form Floating Styles */
+.form-floating input {
+    background-color: #f8f9fa; /* Light gray color */
+    color: #495057; /* Dark gray color */
+    border-color: #ced4da; /* Border color */
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-floating input:focus {
+    border-color: #4CAF50; /* Green color on focus */
+}
+
+/* Button Styles */
+/*.btn-primary {
+    background-color: #4CAF50;*/ /* Green color */
+    /*border-color: #4CAF50;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;*/ /* Darker green color on hover */
+    /*border-color: #45a049;
+    transform: scale(1.05);
+}*/
+
+button.active{
+    background-color: black; /* White background color for active tab */
+    color: #4CAF50; /* Green color for active tab */
+}
+
+
+
+
+
+
+
+/* Button styling */
+.btn-outline-success {
+    animation: pulse 1s infinite;
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+    .btn-outline-success:hover {
+        background-color: #218838;
+        border-color: #218838;
+        transform: scale(1.05);
+    }

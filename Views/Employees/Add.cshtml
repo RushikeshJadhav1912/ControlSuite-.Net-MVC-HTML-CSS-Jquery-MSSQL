@@ -1,0 +1,145 @@
+﻿@model ASPNETMVCCRUD.Models.AddEmployeeViewModel
+
+@{
+}
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .alert {
+        display: none;
+        margin-top: 10px;
+        padding: 15px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    form {
+        margin-bottom: 50px;
+    }
+
+  
+
+</style>
+
+
+<h1>ADD EMPLOYEE</h1>
+<div id="alertContainer" class="alert alert-success">
+    <!-- The alert message will be dynamically inserted here -->
+    @if (TempData.ContainsKey("SuccessMessage"))
+    {
+        <span>@TempData["SuccessMessage"]</span>
+    }
+</div>
+  <form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" required >
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Email Address</label>
+        <input type="email" class="form-control"  asp-for="Email" required>
+    
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Salary</label>
+        <input type="number" class="form-control" asp-for="Salary" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Department</label>
+        <input type="text" class="form-control" asp-for="Department" required>
+    </div>
+
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+        </div>
+    </div>
+     
+
+   
+
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>  
+
+  @* <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="post" action="Add" class="mt-5 mb-5">
+            <div class="mb-3">
+                <label for="" class="form-label">Name</label>
+                <input type="text" class="form-control" asp-for="Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Email Address</label>
+                <input type="email" class="form-control" asp-for="Email" required>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Salary</label>
+                <input type="number" class="form-control" asp-for="Salary" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Date Of Birth</label>
+                <input type="date" class="form-control" asp-for="DateOfBirth" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Department</label>
+                <input type="text" class="form-control" asp-for="Department" required>
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+</div>    *@
+
+
+@section scripts {
+    <script>
+        // Display the alert message on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            var alertContainer = document.getElementById("alertContainer");
+            if (alertContainer.textContent.trim().length > 0) {
+                alertContainer.style.display = "block";
+            }
+        });
+    </script>
+}
+

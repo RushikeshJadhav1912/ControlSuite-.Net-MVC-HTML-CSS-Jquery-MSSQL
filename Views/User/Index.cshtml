@@ -1,0 +1,223 @@
+﻿@model X.PagedList.IPagedList<ASPNETMVCCRUD.Areas.Identity.Data.ApplicationUser>
+<h1>All Users</h1>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            margin-bottom:50px;
+        }
+
+        h1 {
+            color: #3498db;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2c3e50;
+            position: relative;
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #e74c3c;
+            border-bottom: 2px solid #fff; /* White border instead of the line */
+        }
+
+        tr {
+            transition: background-color 0.3s;
+        }
+
+            tr:hover {
+                background-color: #2980b9;
+            }
+
+        .one a {
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+            .one a:hover {
+                background-color: #c0392b;
+                color: #fff;
+                transform: rotate(10deg) scale(1.2);
+            }
+
+
+        .search-input {
+            margin-bottom: 10px;
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+            
+        }
+
+
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        #one  {
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+            #one:hover {
+                background-color: #c0392b;
+                color: #fff;
+                transform: rotate(10deg) scale(1.2);
+            }
+
+       /*  button {
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            button:hover {
+                background-color: #007bff;
+                color: #fff;
+            } */
+
+        #searchTerm {
+            border: 2px solid black;
+        }
+
+    </style>
+
+
+</head>
+
+<!-- Other HTML and CSS styles remain unchanged -->
+
+<form asp-controller="User" asp-action="Index" method="get">
+    <div class="search-input">
+        <label class="page-info" for="searchTerm">Search:</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@ViewBag.SearchTerm" />
+        <button id="one"type="submit">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Firstname</th>
+            <th>LastName</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>Hidden</td>
+                <td class="one">
+                    <a asp-action="Edit" asp-route-id="@user.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .page-info {
+        font-weight: bold;
+    }
+
+    .page-link {
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #e74c3c;
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        display: inline-block;
+    }
+
+        .page-link:hover {
+            background-color: #c0392b;
+            color: #fff;
+            transform: rotate(10deg) scale(1.2);
+        }
+
+        .page-link.disabled {
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+            .page-link.disabled:hover {
+                background-color: #f8f9fa;
+                color: #6c757d;
+            }
+</style>
+<div class="pagination">
+    <span class="page-info">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
+
+    @if (Model.HasPreviousPage)
+    {
+        <a href="@Url.Action("Index", new { pg = 1 })" class="page-link">First</a>
+        <a href="@Url.Action("Index", new { pg = Model.PageNumber - 1 })" class="page-link">Previous</a>
+    }
+    else
+    {
+        <span class="disabled">First | Previous</span>
+    }
+
+    @if (Model.HasNextPage)
+    {
+        <a href="@Url.Action("Index", new { pg = Model.PageNumber + 1 })" class="page-link">Next</a>
+        <a href="@Url.Action("Index", new { pg = Model.PageCount })" class="page-link">Last</a>
+    }
+    else
+    {
+        <span class="disabled">Next | Last</span>
+    }
+</div>
+

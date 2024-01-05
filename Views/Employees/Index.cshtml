@@ -1,0 +1,248 @@
+﻿@model X.PagedList.IPagedList<ASPNETMVCCRUD.Models.Domain.Employee>
+
+@* @{
+	ViewData["Title"] = "Index";
+
+	ASPNETMVCCRUD.Models.Domain.Pager pager = new ASPNETMVCCRUD.Models.Domain.Pager();
+
+	int pageNo = 0;
+	if (ViewBag.Pager != null)
+	{
+		pager = ViewBag.Pager;
+		pageNo = pager.CurrentPage;
+	}
+
+} *@
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 50px;
+    }
+
+    th,td {
+        padding: 12px;
+        text-align: left;
+        border: 2px solid black;
+    }
+
+        td a {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            td a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+    .search-input {
+        margin-bottom: 10px;
+    }
+
+    .highlight {
+        background-color: yellow;
+    }
+
+    button{
+        color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    #searchTerm{
+        border: 2px solid black;
+        }
+</style>
+ 
+<style>
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+} */
+
+h1 {
+    text-align: center;
+}
+
+</style>
+
+
+
+<h1>EMPLOYEES</h1>
+<form asp-controller="Employees" asp-action="Index" method="get">
+    <div class="search-input">
+        <label class="page-info"for=" searchTerm">Search:</label>
+        <input type="text" id="searchTerm" name="searchTerm" value="@ViewBag.SearchTerm" />
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Salary</th>
+			<th>Date Of Birth</th>
+			<th>Department</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var employee in Model)
+		{
+			<tr>
+				<td>@employee.Id</td>
+				<td>@employee.Name</td>
+				<td>@employee.Email</td>
+				<td>@employee.Salary</td>
+				<td>@employee.DateOfBirth.ToString("dd-MM-yyyy")</td>
+				<td>@employee.Department</td>
+                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                {
+                    <td><a href="Employees/View/@employee.Id">View</a></td>
+                }
+                else
+                {
+                    <td style="display: none;"><a href="Employees/View/@employee.Id">View</a></td>
+                }
+            </tr>
+
+			
+			
+		}
+	
+	</tbody>
+</table>
+
+
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom:50px
+    }
+
+    .page-info {
+        font-weight: bold;
+    }
+
+    .page-link {
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .page-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .page-link.disabled {
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+            .page-link.disabled:hover {
+                background-color: #f8f9fa;
+                color: #6c757d;
+            }
+</style>
+
+
+<div class="pagination">
+    <span class="page-info">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
+
+    @if (Model.HasPreviousPage)
+    {
+        <a href="@Url.Action("Index", new { pg = 1 })" class="page-link">First</a>
+        <a href="@Url.Action("Index", new { pg = Model.PageNumber - 1 })" class="page-link">Previous</a>
+    }
+    else
+    {
+        <span class="disabled">First | Previous</span>
+    }
+
+    @if (Model.HasNextPage)
+    {
+        <a href="@Url.Action("Index", new { pg = Model.PageNumber + 1 })" class="page-link">Next</a>
+        <a href="@Url.Action("Index", new { pg = Model.PageCount })" class="page-link">Last</a>
+    }
+    else
+    {
+        <span class="disabled">Next | Last</span>
+    }
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/mark.js/8.11.1/jquery.mark.min.js"></script>
+ 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+	
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var searchTermInput = $("#searchTerm");
+
+            searchTermInput.on("input", function () {
+                var searchTerm = searchTermInput.val();
+                liveSearch(searchTerm);
+            });
+
+            function liveSearch(searchTerm) {
+                $.ajax({
+                    url: "@Url.Action("LiveSearch", "Employees")",
+                    type: "GET",
+                    data: { searchTerm: searchTerm },
+                    success: function (data) {
+                        // Assuming you have a div with id "searchResults" to display the results
+                        $("#searchResults").html(data);
+
+                        // Highlight the search term in the search results using mark.js
+                        highlightSearchTerm(searchTerm);
+                    },
+                    error: function (error) {
+                        console.error("Error fetching live search results: " + error);
+                    }
+                });
+            }
+
+            function highlightSearchTerm(term) {
+                $(".table").unmark({
+                    done: function () {
+                        if (term) {
+                            $(".table").mark(term, { element: "span", className: "highlight" });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}
