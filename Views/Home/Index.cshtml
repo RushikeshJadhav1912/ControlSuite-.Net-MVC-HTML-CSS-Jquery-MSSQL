@@ -1,31 +1,256 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">MINI PROJECT BY RUSHIKESH JADHAV</h1>
+<style>
+    <style >
+    /* Style for Introduction Section */
+    .intro-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+    }
 
-   @*  <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    /* Style for Features Section */
+    .features-section {
+        padding: 80px 0;
+    }
+
+    .feature-box {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333; /* Set text color */
+    }
+
+    /* Style for Testimonials Section */
+    .testimonial-section {
+        background-color: #f8f9fa;
+        padding: 80px 0;
+    }
+
+    .testimonial {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        color: #333; /* Set text color */
+    }
+
+    /* Style for CTA Section */
+    .cta-section {
+        padding: 50px 0;
+        margin-bottom:20px;
+
+    }
+
+    .cta-btn {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 25px;
+        padding: 15px 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+    }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+    <style >
+    /* Style for Features Section */
+    .features-section {
+        padding: 80px 0;
+    }
+
+    .feature-box {
+        text-align: center;
+        margin-bottom: 40px;
+        background-color: #ffffff; /* Set box background color to white */
+        border-radius: 10px; /* Add border-radius for rounded corners */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        padding: 30px; /* Add padding for content spacing */
+        transition: box-shadow 0.3s ease; /* Add transition effect for hover */
+    }
+
+        .feature-box:hover {
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+
+        .feature-box h2 {
+            color: #333; /* Set heading color */
+        }
+
+        .feature-box p {
+            color: #666; /* Set paragraph text color */
+        }
+
+    <style >
+    /* Style for Features Section */
+    .features-section {
+        padding: 80px 0;
+    }
+
+    .feature-box {
+        text-align: center;
+        margin-bottom: 40px;
+        background-color: #f5f5f5; /* Set a slightly darker shade of white or gray */
+        border-radius: 10px; /* Add border-radius for rounded corners */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        padding: 30px; /* Add padding for content spacing */
+        transition: box-shadow 0.3s ease; /* Add transition effect for hover */
+    }
+
+        .feature-box:hover {
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+
+        .feature-box h2 {
+            color: #333; /* Set heading color */
+        }
+
+        .feature-box p {
+            color: #666; /* Set paragraph text color */
+        }
+
+    <style >
+    /* Style for Testimonials Section */
+    .testimonial-section {
+        background-color: #f8f9fa; /* Set background color for the testimonial section */
+        padding: 80px 0;
+    }
+
+    .testimonial {
+        background-color: #ffffff; /* Set background color for testimonial boxes */
+        border-radius: 10px; /* Add border-radius for rounded corners */
+        padding: 20px; /* Add padding for content spacing */
+        margin-bottom: 30px; /* Add margin for separation between testimonial boxes */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    }
+
+        .testimonial p {
+            color: #666; /* Set paragraph text color */
+        }
+
+        .testimonial strong {
+            color: #333; /* Set name text color */
+        }
+
+    <style >
+    /* Style for CTA Section */
+    .cta-section {
+        padding: 50px 0;
+        margin-bottom: 50px; /* Add bottom margin to create space between the CTA section and the footer */
+    }
+
+    .cta-btn {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 25px;
+        padding: 15px 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+    }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+</style>
+
+</style>
+
+</style>
+
+</style>
+
+</style>
+
+<div class="intro-section">
+    <div class="container">
+        <h1 class="display-4">A PROJECT BY RUSHIKESH JADHAV</h1>
+        <p class="lead">Welcome to my project!This Projects have helped me develop my Skills and understand the Industry better...</p>
+    </div>
 </div>
 
-<div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://shiftin.app/wp-content/uploads/2021/10/what-are-employee-management-systems.jpg" height="450px" width="450px" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://st2.depositphotos.com/1757635/8830/i/450/depositphotos_88302772-stock-photo-global-business-strategy.jpg" height="450px" width="450px" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://1.bp.blogspot.com/-JKmoZC3pjEA/YMj2XHISR8I/AAAAAAAADg8/-iNhrDxaGSUScdM_jf8P9p4wCl32geFBwCNcBGAsYHQ/s600/Employee%2BManagement%2BSystem%2BProject.webp" height="450px" width="450px" class="d-block w-100" alt="...">
+<div class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h2>User Role:</h2>
+                    <p>Normal users or employees typically have limited permissions in the system.</p>
+                    <p>Permissions may include:</p>
+                    <ul>
+                        <li>Viewing their own profile and personal information.</li>
+                        <li>Viewing information about other employees or colleagues.</li>
+                        <li>Submitting requests or applications (e.g., leave requests, expense claims).</li>
+                    </ul>
+                    <p>Users are restricted from performing actions such as:</p>
+                    <ul>
+                        <li>Updating or deleting employee records.</li>
+                        <li>Accessing sensitive administrative functionalities.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h2>Admin Role:</h2>
+                    <p>Admins have more advanced permissions compared to regular users.</p>
+                    <p>Permissions may include:</p>
+                    <ul>
+                        <li>Creating, updating, and deleting employee records.</li>
+                        <li>Managing department information.</li>
+                        <li>Assigning roles and permissions to other users.</li>
+                        <li>Generating reports and analytics.</li>
+                    </ul>
+                    <p>Admins have access to functionalities that facilitate the day-to-day management of employees and organizational data.</p>
+                    <p>Admins are restricted from managing other admin and superadmin accounts.</p>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h2>Super Admin Role:</h2>
+                    <p>Super admins have the highest level of permissions in the system.</p>
+                    <p>In addition to all the permissions granted to admins, super admins have additional privileges, such as:</p>
+                    <ul>
+                        <li>Managing admin accounts and permissions.</li>
+                        <li>Configuring system settings and preferences.</li>
+                        <li>Performing system-wide operations like backups, restores, and maintenance tasks.</li>
+                    </ul>
+                    <p>Super admins have complete control over the system and can perform any action within it, including managing both admin and other superadmin accounts.</p>
+
+
+                </div>
+            </div>
         </div>
     </div>
-    <button  class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+</div>
+
+<div class="testimonial-section">
+    <div class="container">
+        <h2 class="text-center mb-4">What People are Saying</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial">
+                    <p>"This project has been incredibly helpful in streamlining our processes and improving efficiency. Highly recommended!"</p>
+                    <p><strong>John Doe</strong></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial">
+                    <p>"The user-friendly interface and comprehensive features make this project a game-changer for our organization."</p>
+                    <p><strong>Jane Smith</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-section text-center">
+    <a href="#" class="cta-btn">Get Started</a>
 </div>
